@@ -1,23 +1,23 @@
 <template>
-	<div id="app">
-		<top-header :appMessage='msg'></top-header>
+	<div>
+		<h1>{{ message }}</h1>
+		<h1>{{ appMessage }}</h1>
 	</div>
 </template>
 
 <script>
 	import Vue from 'vue'
 	import { FirebaseDB } from './../Libs/FirebaseManager.js'
-	import TopHeader from './TopHeader.vue'
 
-	export default {
-		name: 'app',
+	export default Vue.component('top-header', {
+		props: ['appMessage'],
 		firebase: {
-			msg: {
-				source: FirebaseDB.ref('testObj'),
+			message: {
+				source: FirebaseDB.ref('test'),
 				asObject: true
 			}
 		}
-	}
+	})
 
 </script>
 
