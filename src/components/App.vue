@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<top-header :appMessage='msg'></top-header>
+		<top-header></top-header>
 	</div>
 </template>
 
@@ -11,12 +11,6 @@
 
 	export default {
 		name: 'app',
-		firebase: {
-			msg: {
-				source: FirebaseDB.ref('testObj'),
-				asObject: true
-			}
-		}
 	}
 
 </script>
