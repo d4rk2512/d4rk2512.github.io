@@ -28,7 +28,7 @@
 <style>
 	html,
 	body {
-		font-family: Roboto, Arial, sans-serif;
+		font-family: 'Varela Round', sans-serif;
 		background-color: #ECEFF1;
 		overflow: hidden;
 	}
