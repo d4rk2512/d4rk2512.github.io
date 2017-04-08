@@ -8,5 +8,5 @@ Firebase.initializeApp({
     messagingSenderId: "933640995514"
 })
 
-export var FirebaseAuth = Firebase.auth()
-export var FirebaseDB = Firebase.database()
+export var auth = Firebase.auth()
+export var db = Firebase.database()

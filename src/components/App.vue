@@ -6,21 +6,18 @@
 
 <script>
     import Vue from 'vue'
-    // import {
-    //     FirebaseAuth,
-    //     FirebaseDB
-    // } from './../Libs/FirebaseManager.js'
+    // import { auth, db } from './../../Libs/FirebaseManager.js'
     import TopHeader from './TopHeader.vue'
 
     export default {
         name: 'app',
         // data() {
         //     return {
-        //         user: FirebaseAuth.currentUser
+        //         user: auth.currentUser
         //     }
         // },
-        // created: function() {
-        //     FirebaseAuth.onAuthStateChanged((user) => {
+        // created() {
+        //     auth.onAuthStateChanged((user) => {
         //         this.user = user
         //     });
         // }
