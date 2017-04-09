@@ -2,12 +2,8 @@ const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 
 exports.addMessage = functions.https.onRequest((req, res) => {
-    const jwtToken = req.query.token
-    admin.auth().verifyIdToken(jwtToken).then(decodedIdToken => {
-        const original = req.query.text
-        admin.database().ref('/messages').push({ original: original }).then(snapshot => {
-            res.redirect(303, snapshot.ref)
-        })
+    admin.database().ref('/messages').push({ original: req.query.text }).then(snapshot => {
+        res.redirect(303, snapshot.ref)
     })
 })
 
