@@ -1,27 +1,30 @@
 <template>
-	<div id="app">
-		<top-header user='user'></top-header>
-	</div>
+    <div id="app">
+        <top-header :user='user'></top-header>
+    </div>
 </template>
 
 <script>
     import Vue from 'vue'
-    // import { auth, db } from './../../Libs/FirebaseManager.js'
+    import { auth, db } from './../../Libs/FirebaseManager.js'
     import TopHeader from './TopHeader.vue'
 
     export default {
         name: 'app',
-        // data() {
-        //     return {
-        //         user: auth.currentUser
-        //     }
-        // },
-        // created() {
-        //     auth.onAuthStateChanged((user) => {
-        //         this.user = user
-        //     });
-        // }
+        data() {
+            return {
+                user: auth.currentUser
+            }
+        },
+        created() {
+            auth.onAuthStateChanged((user) => {
+                this.user = user
+                console.log(user)
+                // user.getToken().then(token => { console.log(token) })
+            });
+        }
     }
+
 </script>
 
 <style>
