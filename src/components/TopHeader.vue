@@ -22,7 +22,7 @@
 
 <script>
     import Vue from 'vue'
-    import { auth, db } from './../../Libs/FirebaseManager.js'
+    import { auth, db } from './../Libs/FirebaseManager.js'
 
     export default Vue.component('top-header', {
         props: ['user'],

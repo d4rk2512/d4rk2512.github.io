@@ -8,8 +8,20 @@ exports.addMessage = functions.https.onRequest((req, res) => {
 })
 
 exports.makeUppercase = functions.database.ref('/messages/{pushId}/original').onWrite(event => {
-    const original = event.data.val()
-    console.log('Uppercasing', event.params.pushId, original)
-    const uppercase = original.toUpperCase()
-    return event.data.ref.parent.child('uppercase').set(uppercase)
+    // Only edit data when it is first created.
+    if (event.data.previous.exists()) {
+        return;
+    }
+    // Exit when the data is deleted.
+    if (!event.data.exists()) {
+        return;
+    }
+    // Grab the current value of what was written to the Realtime Database.
+    const original = event.data.val();
+    console.log('Uppercasing', event.params.pushId, original);
+    const uppercase = original.toUpperCase();
+    // You must return a Promise when performing asynchronous tasks inside a Functions such as
+    // writing to the Firebase Realtime Database.
+    // Setting an "uppercase" sibling in the Realtime Database returns a Promise.
+    return event.data.ref.parent.child('uppercase').set(uppercase);
 })

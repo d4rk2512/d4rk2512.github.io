@@ -5,7 +5,10 @@ const admin = require('firebase-admin')
 admin.initializeApp(functions.config().firebase)
 
 //-----Functions-----//
-const message = require('./message')
+// const message = require('./message')
 
-exports.addMessage = message.addMessage
-exports.makeUppercase = message.makeUppercase
+// exports.addMessage = message.addMessage
+// exports.makeUppercase = message.makeUppercase
+const RoomManager = require('./Logic/RoomManager')
+
+exports.Room_onCreateRoom = RoomManager.onCreateRoom

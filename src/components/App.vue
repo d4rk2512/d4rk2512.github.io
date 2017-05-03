@@ -6,7 +6,7 @@
 
 <script>
     import Vue from 'vue'
-    import { auth, db } from './../../Libs/FirebaseManager.js'
+    import { auth, db } from './../Libs/FirebaseManager.js'
     import TopHeader from './TopHeader.vue'
 
     export default {
