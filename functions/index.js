@@ -9,6 +9,6 @@ admin.initializeApp(functions.config().firebase)
 
 // exports.addMessage = message.addMessage
 // exports.makeUppercase = message.makeUppercase
-const RoomManager = require('./Logic/RoomManager')
+const RoomManager = require('./Logic/RoomManager.js')
 
 exports.Room_onCreateRoom = RoomManager.onCreateRoom

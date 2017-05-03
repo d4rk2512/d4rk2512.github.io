@@ -1,10 +1,12 @@
 const functions = require('firebase-functions')
+const admin = require('firebase-admin')
+
 let roomManager = function () { }
 
 //Logic
 
 //Listeners
-roomManager.prototype.onCreateRoom = functions.database.ref('/room_list/create_queue/{roomId}').onWrite(event => {
+exports.onCreateRoom = functions.database.ref('/room_list/create_queue/{roomId}').onWrite(event => {
     // Only edit data when it is first created.
     if (event.data.previous.exists() || !event.data.exists()) {
         return;
@@ -17,11 +19,7 @@ roomManager.prototype.onCreateRoom = functions.database.ref('/room_list/create_q
         status: 'waiting',
         players: ['Foxx']
     }
-    return event.data.adminRef.parent.child(event.params.roomId).set(options).then(event.data.adminRef.remove);
+    return event.data.adminRef.root.child('/room_list/' + event.params.roomId).set(options).then(() => {
+        admin.database().ref('/room_list/create_queue/' + event.params.roomId).remove()
+    })
 })
-
-roomManager.prototype.JoinRoom = function (roomId) {
-
-}
-
-exports = new roomManager();
