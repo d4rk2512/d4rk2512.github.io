@@ -1,5 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// <Router>
+//   <Switch>
+//     <Route path="/about">
+//       <About />
+//     </Route>
+//     <Route path="/users">
+//       <Users />
+//     </Route>
+//     <Route path="/">
+//       <Home />
+//     </Route>
+//   </Switch>
+// </Router>
 
 function App() {
   return (
